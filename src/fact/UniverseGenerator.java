@@ -8,7 +8,7 @@ import model.Conjunto;
 import model.Elemento;
 
 public class UniverseGenerator {
-private static Universo universe;
+	private static Universo universe;
 
 public static Universo generate(String file) {
 	if (file.contains(".txt")) {
@@ -35,6 +35,12 @@ public static Universo generate(String file) {
 			}
 			Conjunto conjuTemp = new  Conjunto(linha.substring(0, linha.indexOf("=")).replaceAll(" ", ""), elementosTemp);
 			conjuntos.add(conjuTemp);
+		}else {
+			if (linha.contains("=")) {
+				
+				Elemento temp  = new Elemento((linha.substring(0,linha.indexOf("=")).replaceAll(" ", "")), Integer.parseInt(linha.substring(linha.indexOf("=")+1, linha.length()).replace(" ","")));
+				elementosUniverso.add(temp);
+			}
 		}
 	}
 	universe=new Universo(conjuntos, elementosUniverso);
