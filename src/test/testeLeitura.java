@@ -13,6 +13,9 @@ public class testeLeitura {
 	System.out.println(Archive.readFile("teste"));
 	UniverseGenerator.generate("teste.txt");
 	System.out.println(UniverseGenerator.generate("teste.txt").getConjuntos().get(0).getNome());
+	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getNome());
+	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getValor());
+	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getNome());
 	}
 	
 
