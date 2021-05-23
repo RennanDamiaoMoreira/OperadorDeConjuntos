@@ -3,25 +3,25 @@ package model;
 import java.util.ArrayList;
 
 public class Conjunto {
-	private char nome;
-	private ArrayList<Integer> elementos = new ArrayList<Integer>();
+	private String nome;
+	private ArrayList<Elemento> elementos = new ArrayList<Elemento>();
 	
-	public Conjunto(char nome, ArrayList<Integer> elementos) {
+	public Conjunto(String nome, ArrayList<Elemento> elementos) {
 		super();
 		this.nome = nome;
 		this.elementos = elementos;
 	}
 	
-	public char getNome() {
+	public String getNome() {
 		return nome;
 	}
-	public void setNome(char nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public ArrayList<Integer> getElementos() {
+	public ArrayList<Elemento> getElementos() {
 		return elementos;
 	}
-	public void setElementos(ArrayList<Integer> elementos) {
+	public void setElementos(ArrayList<Elemento> elementos) {
 		this.elementos = elementos;
 	}
 	
