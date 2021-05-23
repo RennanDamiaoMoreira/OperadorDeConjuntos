@@ -15,12 +15,12 @@ public class TestedeContem {
 	UniverseGenerator.generate("teste.txt");
 	
 	Universo teste = UniverseGenerator.generate("teste.txt");
-	System.out.println(teste.contido("A","B"));
+	System.out.println(teste.contido("B","A"));
 	
 	
 	
-	System.out.println(teste.pertence("1", "C"));
-	System.out.println(teste.pertence("1", "B"));
+	System.out.println(teste.pertence("43", "A"));
+	System.out.println(teste.pertence("43", "B"));
 	
 	
 	}
