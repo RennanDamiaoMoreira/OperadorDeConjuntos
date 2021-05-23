@@ -65,6 +65,15 @@ public class Universo {
 			if (menor.getElementos().size()>maior.getElementos().size()) {
 				return false;
 			}
+			boolean[]have=new boolean[menor.getElementos().size()]; 
+			for (Elemento eleMenor: menor.getElementos()) {
+				
+				for (Elemento eleMaior:maior.getElementos()) {
+				if (eleMaior.getValor()==eleMenor.getValor()) {
+					
+				}
+				}
+			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
