@@ -1,5 +1,6 @@
 package test;
 
+import fact.UniverseGenerator;
 import model.Archive;
 
 public class testeLeitura {
@@ -10,6 +11,7 @@ public class testeLeitura {
 		System.out.println(Archive.filesDirectory()[i]); }
 	
 	System.out.println(Archive.readFile("teste"));
+	UniverseGenerator.generate("teste.txt");
 	}
 	
 
