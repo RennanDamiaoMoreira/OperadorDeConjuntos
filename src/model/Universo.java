@@ -37,7 +37,7 @@ public class Universo {
 		return null;
 	}
 
-	public boolean pertence(String elemento, String conjunto) throws Exception {
+	public boolean pertence(String elemento, String conjunto) {
 	
 		try {
 			Conjunto c = buscaConjunto(conjunto);
@@ -51,7 +51,7 @@ public class Universo {
 			}
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
-			throw new Exception();
+			
 		}
 		return false;
 	}
