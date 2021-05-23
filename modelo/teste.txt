@@ -1,7 +1,1 @@
-Joaquim José da Silva Xavier, o Tiradentes (Fazenda do Pombal,[1] batizado em 12 de novembro de 1746 — Rio de Janeiro, 21 de abril de 1792), foi um dentista, tropeiro, minerador, comerciante, militar e ativista político brasileiro, que atuou nas capitanias de Minas Gerais e Rio de Janeiro.
-
-Patrono cívico do Brasil, além de patrono das Polícias Militares e Polícias Civis dos estados brasileiros,[2] Tiradentes é nacionalmente conhecido por ser o personagem símbolo da conspiração denominada Inconfidência Mineira, movimento revolucionário cujo objetivo era a independência total do poder colonial português e a criação de uma república brasileira. Quando a trama dos separatistas foi descoberta pelas autoridades, Tiradentes foi preso, julgado e enforcado publicamente.
-
-Por conta disso, desde o advento da República no Brasil (1889), Tiradentes é considerado herói nacional: o mártir foi criado pelos republicanos com a intenção de ressignificar a identidade brasileira.[3]
-
-O dia de sua execução, 21 de abril, é feriado nacional. 
+A = {1, 87, 4,-1, 43}
