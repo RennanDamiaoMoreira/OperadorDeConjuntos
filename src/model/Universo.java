@@ -55,7 +55,7 @@ public class Universo {
 		}
 		return false;
 	}
-	public boolean contido (String subConjun,String conj) {
+	public boolean contidoPropriamente (String subConjun,String conj) {
 		try {
 			Conjunto menor = buscaConjunto(subConjun);
 			Conjunto maior = buscaConjunto(conj);
@@ -92,6 +92,19 @@ public class Universo {
 		}
 		
 		
+		return false;
+	}
+	public boolean contidoIgual(String subConjun,String conj) {
+		if (!contidoPropriamente(subConjun, conj)) {
+			return false;
+		}
+		try {
+		if (buscaConjunto(subConjun).getElementos().size()==buscaConjunto(conj).getElementos().size()) {
+			return true;
+		}
+		}catch (Exception e) {
+			System.out.println("erro");
+		}
 		return false;
 	}
 
