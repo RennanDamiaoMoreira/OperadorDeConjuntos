@@ -28,4 +28,32 @@ public class Universo {
 		this.elementos = elementos;
 	}
 
+	public Conjunto buscaConjunto(String conjunto) {
+		for (Conjunto referencia : conjuntos) {
+			if (referencia.getNome().equals(conjunto)) {
+				return referencia;
+			}
+		}
+		return null;
+	}
+
+	public boolean pertence(String elemento, String conjunto) throws Exception {
+	
+		try {
+			Conjunto c = buscaConjunto(conjunto);
+			if (c == null) {
+				throw new Exception("nao foi possivel encontrar conjunto - error U1");
+			}
+			for (Elemento e: c.getElementos()) {
+				if (e.getNome().equals(elemento)) {
+					return true;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new Exception();
+		}
+		return false;
+	}
+
 }
