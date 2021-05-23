@@ -55,5 +55,22 @@ public class Universo {
 		}
 		return false;
 	}
+	public boolean contido (String subConjun,String conj) {
+		try {
+			Conjunto menor = buscaConjunto(subConjun);
+			Conjunto maior = buscaConjunto(conj);
+			if (menor == null || maior== null) {
+				throw new Exception("nao foi possivel encontrar conjunto - error U1");
+			}
+			if (menor.getElementos().size()>maior.getElementos().size()) {
+				return false;
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		return false;
+	}
 
 }
