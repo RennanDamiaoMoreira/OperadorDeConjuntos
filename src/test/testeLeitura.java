@@ -2,6 +2,7 @@ package test;
 
 import fact.UniverseGenerator;
 import model.Archive;
+import model.Universo;
 
 public class testeLeitura {
 
@@ -11,11 +12,8 @@ public class testeLeitura {
 		System.out.println(Archive.filesDirectory()[i]); }
 	
 	System.out.println(Archive.readFile("teste"));
-	UniverseGenerator.generate("teste.txt");
-	System.out.println(UniverseGenerator.generate("teste.txt").getConjuntos().get(0).getNome());
-	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getNome());
-	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getValor());
-	System.out.println(UniverseGenerator.generate("teste.txt").getElementos().get(0).getNome());
+	Universo teste = UniverseGenerator.generate("teste.txt");
+	System.out.println(teste.contido("A","B"));
 	}
 	
 

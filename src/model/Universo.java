@@ -70,10 +70,23 @@ public class Universo {
 				
 				for (Elemento eleMaior:maior.getElementos()) {
 				if (eleMaior.getValor()==eleMenor.getValor()) {
-					
+					have[menor.getElementos().indexOf(eleMenor)]=true;
+					break;
 				}
+				if (maior.getElementos().indexOf(maior)==(maior.getElementos().size()-1)) {
+					have[menor.getElementos().indexOf(eleMenor)]=false;
+					break;
+				}
+				
 				}
 			}
+			for (int i = 0 ; i<have.length;i++) {
+				if (!have[i]) {
+					return false;
+				}
+			}
+			return true;
+			
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
