@@ -2,11 +2,12 @@ package test;
 
 import fact.UniverseGenerator;
 import model.Archive;
+import model.Elemento;
 import model.Universo;
 
 public class TestedeContem {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		for(int i=0;i<Archive.filesDirectory().length;i++) {
 		System.out.println(Archive.filesDirectory()[i]); }
@@ -15,12 +16,13 @@ public class TestedeContem {
 	UniverseGenerator.generate("teste.txt");
 	
 	Universo teste = UniverseGenerator.generate("teste.txt");
-	System.out.println(teste.contido("B","A"));
+	for (Elemento e : teste.intercecao("A","B").getElementos()){
+		System.out.println(e.getNome());
+	}
 	
 	
 	
-	System.out.println(teste.pertence("43", "A"));
-	System.out.println(teste.pertence("43", "B"));
+
 	
 	
 	}
