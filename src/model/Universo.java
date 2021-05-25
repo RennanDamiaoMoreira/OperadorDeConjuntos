@@ -68,17 +68,7 @@ public class Universo {
 			boolean[]have=new boolean[menor.getElementos().size()]; 
 			for (Elemento eleMenor: menor.getElementos()) {
 				
-				for (Elemento eleMaior:maior.getElementos()) {
-				if (eleMaior.getValor()==eleMenor.getValor()) {
-					have[menor.getElementos().indexOf(eleMenor)]=true;
-					break;
-				}
-				if (maior.getElementos().indexOf(maior)==(maior.getElementos().size()-1)) {
-					have[menor.getElementos().indexOf(eleMenor)]=false;
-					break;
-				}
-				
-				}
+				have[menor.getElementos().indexOf(eleMenor)]=pertence(eleMenor.getNome(), conj);
 			}
 			for (int i = 0 ; i<have.length;i++) {
 				if (!have[i]) {
@@ -106,6 +96,50 @@ public class Universo {
 			System.out.println("erro");
 		}
 		return false;
+	}
+	public Conjunto uniao(String conjunto1,String conjunto2){
+
+		Conjunto uniao=null;
+		try{
+			Conjunto conj1 = buscaConjunto(conjunto1);
+			Conjunto conj2=buscaConjunto(conjunto2);
+			if (conj1==null||conj2==null){
+				throw new Exception("Nao foi possivel encontrar o conjunto - U1");
+			}
+			uniao=new Conjunto(conjunto1+"U"+conjunto2,new ArrayList<Elemento>());
+			this.conjuntos.add(uniao);
+			for (Elemento ref: conj1.getElementos()){
+				uniao.getElementos().add(ref);
+			}
+			for (Elemento ref:conj2.getElementos()){
+				if(!pertence(ref.getNome(),conj1.getNome())){
+					uniao.getElementos().add(ref);
+				}
+			}
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		return uniao;
+	}
+	public  Conjunto intercecao(String conjunto1, String conjunto2){
+		Conjunto intercecao=null;
+		try{
+		Conjunto conj1 = buscaConjunto(conjunto1);
+		Conjunto conj2 = buscaConjunto(conjunto2);
+		if (conj1==null||conj2==null){
+			throw  new Exception("Nao foi possivel encontrar o conjunto - U1");
+		}
+		intercecao=new Conjunto(conj1.getNome()+"INTER"+conj2,new ArrayList<Elemento>());
+		for (int i = 0 ; i<conj1.getElementos().size();i++){
+			if (pertence(conj1.getElementos().get(i).getNome(),conj2.getNome())){
+				intercecao.addElemento(conj1.getElementos().get(i));
+			}
+		}
+
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		return intercecao;
 	}
 
 }
