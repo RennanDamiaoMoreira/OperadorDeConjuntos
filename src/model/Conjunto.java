@@ -25,6 +25,10 @@ public class Conjunto {
 		this.elementos = elementos;
 	}
 	
-	
+	public void addElemento(Elemento e ){
+		if (!elementos.contains(e)){
+			elementos.add(e);
+		}
+	}
 	
 }
