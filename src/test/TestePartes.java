@@ -21,22 +21,27 @@ public class TestePartes {
 
         Partes p = teste.getPartes().get(0);
         ArrayList<Conjunto> cPartes = p.getConjuntos();
-        System.out.println(cPartes.size());
-        for (Conjunto c : cPartes) {
-            System.out.println("--------------");
-            if (c != null) {
-                for (Elemento e : c.getElementos()) {
+//        System.out.println(cPartes.size());
+//        for (Conjunto c : cPartes) {
+//            System.out.println("--------------");
+//            if (c != null) {
+//                for (Elemento e : c.getElementos()) {
+//
+//                        System.out.println(e.getValor());
+//
+//                }
+//            }else {
+//				System.out.println("Conjunto VAZIO");
+//			}
+//            System.out.println("--------------");
+//        }
 
-                        System.out.println(e.getValor());
-
-                }
-            }else {
-				System.out.println("Conjunto VAZIO");
-			}
-            System.out.println("--------------");
+Conjunto reverso = p.reverso();
+        System.out.println("nome " +reverso.getNome());
+        System.out.println("tamanho"+reverso.getElementos().size());
+        for (Elemento e : reverso.getElementos()){
+            System.out.println(e.getValor());
         }
-
-
     }
 
 
