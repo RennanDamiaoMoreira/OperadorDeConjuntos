@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class Universo {
 	private ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
 	private ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+	private ArrayList<Partes> partes=new ArrayList<Partes>();
+
+	public ArrayList<Partes> getPartes() {
+		return partes;
+	}
 
 	public ArrayList<Conjunto> getConjuntos() {
 		return conjuntos;
@@ -140,6 +145,9 @@ public class Universo {
 			System.out.println(e.getMessage());
 		}
 		return intercecao;
+	}
+	public void gerarParte(Conjunto conjunto){
+		partes.add(new Partes(conjunto));
 	}
 
 }
