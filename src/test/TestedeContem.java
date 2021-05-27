@@ -2,7 +2,7 @@ package test;
 
 import fact.UniverseGenerator;
 import model.Archive;
-import model.Elemento;
+import model.Elementos;
 import model.Universo;
 
 public class TestedeContem {
@@ -16,7 +16,7 @@ public class TestedeContem {
 	UniverseGenerator.generate("teste.txt");
 	
 	Universo teste = UniverseGenerator.generate("teste.txt");
-	for (Elemento e : teste.intercecao("A","B").getElementos()){
+	for (Elementos e : teste.intercecao("A","B").getElementos()){
 		System.out.println(e.getNome());
 	}
 	
