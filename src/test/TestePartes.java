@@ -39,8 +39,8 @@ public class TestePartes {
 Conjunto reverso = p.reverso();
         System.out.println("nome " +reverso.getNome());
         System.out.println("tamanho"+reverso.getElementos().size());
-        for (Elemento e : reverso.getElementos()){
-            System.out.println(e.getValor());
+        for (Elementos e : reverso.getElementos()){
+            System.out.println(e.getNome());
         }
     }
 
