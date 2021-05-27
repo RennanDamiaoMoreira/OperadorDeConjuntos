@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Universo {
 	private ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
-	private ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+	private ArrayList<Elementos> elementos = new ArrayList<Elementos>();
 	private ArrayList<Partes> partes=new ArrayList<Partes>();
 
 	public ArrayList<Partes> getPartes() {
@@ -19,15 +19,15 @@ public class Universo {
 		this.conjuntos = conjuntos;
 	}
 
-	public ArrayList<Elemento> getElementos() {
+	public ArrayList<Elementos> getElementos() {
 		return elementos;
 	}
 
-	public void setElementos(ArrayList<Elemento> elementos) {
+	public void setElementos(ArrayList<Elementos> elementos) {
 		this.elementos = elementos;
 	}
 
-	public Universo(ArrayList<Conjunto> conjuntos, ArrayList<Elemento> elementos) {
+	public Universo(ArrayList<Conjunto> conjuntos, ArrayList<Elementos> elementos) {
 		super();
 		this.conjuntos = conjuntos;
 		this.elementos = elementos;
@@ -49,7 +49,7 @@ public class Universo {
 			if (c == null) {
 				throw new Exception("nao foi possivel encontrar conjunto - error U1");
 			}
-			for (Elemento e: c.getElementos()) {
+			for (Elementos e: c.getElementos()) {
 				if (e.getNome().equals(elemento)) {
 					return true;
 				}
@@ -71,7 +71,7 @@ public class Universo {
 				return false;
 			}
 			boolean[]have=new boolean[menor.getElementos().size()]; 
-			for (Elemento eleMenor: menor.getElementos()) {
+			for (Elementos eleMenor: menor.getElementos()) {
 				
 				have[menor.getElementos().indexOf(eleMenor)]=pertence(eleMenor.getNome(), conj);
 			}
@@ -111,12 +111,12 @@ public class Universo {
 			if (conj1==null||conj2==null){
 				throw new Exception("Nao foi possivel encontrar o conjunto - U1");
 			}
-			uniao=new Conjunto(conjunto1+"U"+conjunto2,new ArrayList<Elemento>());
+			uniao=new Conjunto(conjunto1+"U"+conjunto2,new ArrayList<>());
 			this.conjuntos.add(uniao);
-			for (Elemento ref: conj1.getElementos()){
+			for (Elementos ref: conj1.getElementos()){
 				uniao.getElementos().add(ref);
 			}
-			for (Elemento ref:conj2.getElementos()){
+			for (Elementos ref:conj2.getElementos()){
 				if(!pertence(ref.getNome(),conj1.getNome())){
 					uniao.getElementos().add(ref);
 				}
@@ -134,7 +134,7 @@ public class Universo {
 		if (conj1==null||conj2==null){
 			throw  new Exception("Nao foi possivel encontrar o conjunto - U1");
 		}
-		intercecao=new Conjunto(conj1.getNome()+"INTER"+conj2,new ArrayList<Elemento>());
+		intercecao=new Conjunto(conj1.getNome()+"INTER"+conj2,new ArrayList<>());
 		for (int i = 0 ; i<conj1.getElementos().size();i++){
 			if (pertence(conj1.getElementos().get(i).getNome(),conj2.getNome())){
 				intercecao.addElemento(conj1.getElementos().get(i));
@@ -146,8 +146,14 @@ public class Universo {
 		}
 		return intercecao;
 	}
-	public void gerarParte(Conjunto conjunto){
-		partes.add(new Partes(conjunto));
+	public Partes gerarParte(Conjunto conjunto){
+		Partes p = new Partes((conjunto));
+		partes.add(p);
+		conjuntos.remove(conjunto);
+		return p;
+	}
+	public void reversoParte(Partes p ){
+		conjuntos.add(p.reverso());
 	}
 
 }
