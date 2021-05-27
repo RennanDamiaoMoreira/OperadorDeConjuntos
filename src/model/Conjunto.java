@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Conjunto {
     private String nome;
-    private ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+    private ArrayList<Elementos> elementos = new ArrayList<Elementos>();
 
-    public Conjunto(String nome, ArrayList<Elemento> elementos) {
+    public Conjunto(String nome, ArrayList<Elementos> elementos) {
         super();
         this.nome = nome;
         this.elementos = elementos;
@@ -20,17 +20,17 @@ public class Conjunto {
         this.nome = nome;
     }
 
-    public ArrayList<Elemento> getElementos() {
+    public ArrayList<Elementos> getElementos() {
         return elementos;
     }
 
-    private void setElementos(ArrayList<Elemento> elementos) {
+    private void setElementos(ArrayList<Elementos> elementos) {
         this.elementos = elementos;
     }
 
-    public void addElemento(Elemento e) {
+    public void addElemento(Elementos e) {
         boolean permitir = true;
-        for (Elemento ref : elementos) {
+        for (Elementos ref : elementos) {
             if (ref == e) {
                 permitir = false;
                 break;
