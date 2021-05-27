@@ -10,11 +10,11 @@ public class Partes {
         ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
         conjuntos.add(null);
         for (int i = 0; i < conjunto.getElementos().size(); i++) {
-            ArrayList<Elemento> incrementos = new ArrayList<Elemento>();
+            ArrayList<Elementos> incrementos = new ArrayList<>();
             for (int j = i; j < conjunto.getElementos().size(); j++) {
                 incrementos.add(conjunto.getElementos().get(j));
-                ArrayList<Elemento> elementosTem = new ArrayList<Elemento>();
-                for (Elemento ref :
+                ArrayList<Elementos> elementosTem = new ArrayList<>();
+                for (Elementos ref :
                         incrementos) {
                     elementosTem.add(ref);
 
@@ -36,12 +36,12 @@ public class Partes {
     }
 
     public Conjunto reverso() {
-        ArrayList<Elemento> elementos = new ArrayList<Elemento>();
+        ArrayList<Elementos> elementos = new ArrayList<>();
 
         Conjunto reverso = new Conjunto(this.nome, elementos);
         for (Conjunto c : conjuntos){
             if (c!=null){
-                for (Elemento e : c.getElementos()){
+                for (Elementos e : c.getElementos()){
                     reverso.addElemento(e);
                 }
             }
