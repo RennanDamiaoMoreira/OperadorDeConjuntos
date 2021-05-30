@@ -17,31 +17,31 @@ public class TestePartes {
         UniverseGenerator.generate("teste.txt");
 
         Universo teste = UniverseGenerator.generate("teste.txt");
-        teste.gerarParte(teste.buscaConjunto("B"));
+        teste.gerarParte(teste.buscaConjunto("A"));
 
         Partes p = teste.getPartes().get(0);
         ArrayList<Conjunto> cPartes = p.getConjuntos();
-//        System.out.println(cPartes.size());
-//        for (Conjunto c : cPartes) {
-//            System.out.println("--------------");
-//            if (c != null) {
-//                for (Elemento e : c.getElementos()) {
-//
-//                        System.out.println(e.getValor());
-//
-//                }
-//            }else {
-//				System.out.println("Conjunto VAZIO");
-//			}
-//            System.out.println("--------------");
-//        }
+        System.out.println(cPartes.size());
+        for (Conjunto c : cPartes) {
+            System.out.println("--------------");
+            if (c != null) {
+                for (Elementos e : c.getElementos()) {
 
-Conjunto reverso = p.reverso();
-        System.out.println("nome " +reverso.getNome());
-        System.out.println("tamanho"+reverso.getElementos().size());
-        for (Elementos e : reverso.getElementos()){
-            System.out.println(e.getNome());
+                        System.out.println(e.getValor());
+
+                }
+            }else {
+				System.out.println("Conjunto VAZIO");
+			}
+            System.out.println("--------------");
         }
+
+//Conjunto reverso = p.reverso();
+//        System.out.println("nome " +reverso.getNome());
+//        System.out.println("tamanho"+reverso.getElementos().size());
+//        for (Elementos e : reverso.getElementos()){
+//            System.out.println(e.getNome());
+//        }
     }
 
 

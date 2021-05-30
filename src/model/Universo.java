@@ -60,6 +60,22 @@ public class Universo {
 		}
 		return false;
 	}
+	public boolean pertence(Elementos elemento, Conjunto conjunto) {
+
+		try {
+
+
+			for (Elementos e: conjunto.getElementos()) {
+				if (e.getValor()==elemento.getValor()) {
+					return true;
+				}
+			}
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+
+		}
+		return false;
+	}
 	public boolean contidoPropriamente (String subConjun,String conj) {
 		try {
 			Conjunto menor = buscaConjunto(subConjun);
@@ -100,6 +116,45 @@ public class Universo {
 		}catch (Exception e) {
 			System.out.println("erro");
 		}
+		return false;
+	}
+	public boolean contidoIgual(Conjunto subConjun,Conjunto conj) {
+		if (!contidoPropriamente(subConjun, conj)) {
+			return false;
+		}
+		try {
+			if (subConjun.getElementos().size()==conj.getElementos().size()) {
+				return true;
+			}
+		}catch (Exception e) {
+			System.out.println("erro");
+		}
+		return false;
+	}
+	public boolean contidoPropriamente (Conjunto subConjun,Conjunto conj) {
+		try {
+
+
+			if (subConjun.getElementos().size()>conj.getElementos().size()) {
+				return false;
+			}
+			boolean[]have=new boolean[subConjun.getElementos().size()];
+			for (Elementos eleMenor: subConjun.getElementos()) {
+
+				have[subConjun.getElementos().indexOf(eleMenor)]=pertence(eleMenor, conj);
+			}
+			for (int i = 0 ; i<have.length;i++) {
+				if (!have[i]) {
+					return false;
+				}
+			}
+			return true;
+
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+
 		return false;
 	}
 	public Conjunto uniao(String conjunto1,String conjunto2){
@@ -152,8 +207,6 @@ public class Universo {
 		conjuntos.remove(conjunto);
 		return p;
 	}
-	public void reversoParte(Partes p ){
-		conjuntos.add(p.reverso());
-	}
+
 
 }

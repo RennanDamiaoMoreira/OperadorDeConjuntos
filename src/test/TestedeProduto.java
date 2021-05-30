@@ -20,16 +20,20 @@ public class TestedeProduto {
 	Universo teste = UniverseGenerator.generate("teste.txt");
 		ProdutoCartesiano p = new ProdutoCartesiano(teste.buscaConjunto("A"), teste.buscaConjunto("B"));
 		System.out.println("A com B   "+p.getProduto());
-		ProdutoCartesiano pp = new ProdutoCartesiano(teste.buscaConjunto("B"),p);
+		ProdutoCartesiano pp = new ProdutoCartesiano(teste.buscaConjunto("B"),teste.buscaConjunto("C"));
 		System.out.println(pp.getNome()+"\n"+pp.getProduto());
-//		for (ArrayList a : pp.getProduto()){
-//			System.out.println(a.get(0).getClass().getName().contains("Array"));
-//			System.out.println(a.get(1).getClass().getName().contains("Array"));
-//		}
+		ProdutoCartesiano ppp = new ProdutoCartesiano(p,pp);
+//
 		p.verProd();
 		pp.verProd();
+		ppp.verProd();
 
-	
+	p=ppp;
+	ppp = new ProdutoCartesiano(p,pp);
+	ppp.verProd();
+	pp=ppp;
+	ppp=new ProdutoCartesiano(pp,p);
+	ppp.verProd();
 	
 	
 

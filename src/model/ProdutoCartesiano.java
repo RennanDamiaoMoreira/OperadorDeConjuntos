@@ -11,7 +11,6 @@ public class ProdutoCartesiano {
     public ProdutoCartesiano (Conjunto a, Conjunto b){
         for (Elementos elementoA:a.getElementos()) {
             for(Elementos elementoB:b.getElementos()){
-
                ArrayList<Elementos>temp=new ArrayList<>();
                temp.add(elementoA);
                temp.add(elementoB);
@@ -23,6 +22,19 @@ public class ProdutoCartesiano {
     }
     public ProdutoCartesiano (Conjunto a, ProdutoCartesiano p){
         for (Elementos elementoA:a.getElementos()) {
+            for(ArrayList<ArrayList> produtinhos:p.getProduto()){
+
+                ArrayList temp=new ArrayList<>();
+                temp.add(elementoA);
+                temp.add(produtinhos);
+                produto.add(temp);
+            }
+
+        }
+        nome = a.getNome()+"X<"+p.getNome()+">";
+    }
+    public ProdutoCartesiano (ProdutoCartesiano a, ProdutoCartesiano p){
+        for (ArrayList<ArrayList> elementoA:a.getProduto()) {
             for(ArrayList<ArrayList> produtinhos:p.getProduto()){
 
                 ArrayList temp=new ArrayList<>();
@@ -62,7 +74,6 @@ public class ProdutoCartesiano {
             retorna = retorna+"["+temp.getNome()+",";
         }
         if (a.get(1).getClass().getName().contains("java.util.ArrayList")){
-
             retorna=retorna +percorreProd((ArrayList) a.get(1))+"]";
         }else{
             temp = (Elementos) a.get(1);
