@@ -36,12 +36,12 @@ public class TestePartes {
             System.out.println("--------------");
         }
 
-//Conjunto reverso = p.reverso();
-//        System.out.println("nome " +reverso.getNome());
-//        System.out.println("tamanho"+reverso.getElementos().size());
-//        for (Elementos e : reverso.getElementos()){
-//            System.out.println(e.getNome());
-//        }
+Conjunto reverso = p.refazer();
+        System.out.println("nome " +reverso.getNome());
+        System.out.println("tamanho"+reverso.getElementos().size());
+        for (Elementos e : reverso.getElementos()){
+            System.out.println(e.getNome());
+        }
     }
 
 

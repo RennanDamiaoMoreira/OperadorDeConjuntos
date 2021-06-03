@@ -189,7 +189,7 @@ public class Universo {
 		if (conj1==null||conj2==null){
 			throw  new Exception("Nao foi possivel encontrar o conjunto - U1");
 		}
-		intercecao=new Conjunto(conj1.getNome()+"INTER"+conj2,new ArrayList<>());
+		intercecao=new Conjunto(conj1.getNome()+"-INTER-"+conj2.getNome(),new ArrayList<>());
 		for (int i = 0 ; i<conj1.getElementos().size();i++){
 			if (pertence(conj1.getElementos().get(i).getNome(),conj2.getNome())){
 				intercecao.addElemento(conj1.getElementos().get(i));
@@ -199,14 +199,24 @@ public class Universo {
 		}catch (Exception e){
 			System.out.println(e.getMessage());
 		}
+		conjuntos.add(intercecao);
 		return intercecao;
 	}
 	public Partes gerarParte(Conjunto conjunto){
 		Partes p = new Partes((conjunto));
 		partes.add(p);
-		conjuntos.remove(conjunto);
 		return p;
 	}
 
+
+	public Conjunto diferenca(Conjunto a , Conjunto b){
+		Conjunto diferenca = new Conjunto(a.getNome()+"-"+b.getNome(),new ArrayList<Elementos>());
+		for (Elementos e : a.getElementos()){
+			if (!pertence(e,b)){
+				diferenca.addElemento(e);
+			}
+		}
+		return diferenca;
+	}
 
 }

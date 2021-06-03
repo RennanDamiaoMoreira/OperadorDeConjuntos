@@ -4,95 +4,81 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Partes {
-	String nome;
-	ArrayList<Conjunto> conjuntos;
+    String nome;
+    ArrayList<Conjunto> conjuntos;
 
-	public Partes(Conjunto conjunto) {
-		ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
-		
-		conjuntos.addAll((dividirElementos(conjunto.getElementos())));
-		corrigeConjuntos(conjuntos);
-		this.nome = conjunto.getNome();
-		this.conjuntos = corrigeConjuntos(conjuntos);
-		this.conjuntos.add(null);
-	}
+    public Partes(Conjunto conjunto) {
+        ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
 
-	private ArrayList<Conjunto> dividirElementos(ArrayList<Elementos> elementos) {
-		if (elementos.size() == 0) {
-			return new ArrayList<Conjunto>();
-		}
+        conjuntos.addAll((dividirElementos(conjunto.getElementos())));
 
-		Elementos ancora = elementos.get(0);
+        this.nome = conjunto.getNome();
+        this.conjuntos = conjuntos;
+        this.conjuntos.add(null);
+    }
 
-		ArrayList<Elementos> retornaAncora = new ArrayList<Elementos>();
-		ArrayList<Conjunto> sub = new ArrayList<Conjunto>();
-		ArrayList<Conjunto> temp = new ArrayList<Conjunto>();
-		retornaAncora.addAll(elementos);
-		retornaAncora.remove(0);
-		sub.addAll(dividirElementos(retornaAncora));
+    private ArrayList<Conjunto> dividirElementos(ArrayList<Elementos> elementos) {
+        if (elementos.size() == 0) {
+            return new ArrayList<Conjunto>();
+        }
 
-		if (sub.size() == 0) {
-			Conjunto primario = new Conjunto("conjunto ", new ArrayList<Elementos>());
-			primario.addElemento(ancora);
-			sub.add(primario);
+        Elementos ancora = elementos.get(0);
 
-			return sub;
-		}
+        elementos.remove(0);
+        ArrayList<Conjunto> sub = dividirElementos(elementos);
+        if (sub.size() == 0) {
+            ArrayList<Elementos> primarioElemento = new ArrayList<Elementos>();
+            primarioElemento.add(ancora);
+            Conjunto primario = new Conjunto("conjunto", primarioElemento);
+            sub.add(primario);
+            return sub;
+        }
 
-		for (Conjunto ref : sub) {
-			if (ref != null) {
-				Conjunto temporario = new Conjunto("conjunto ", new ArrayList<Elementos>());
-				temporario.getElementos().addAll(ref.getElementos());
-				temporario.addElemento(ancora);
-				temp.add(temporario);
-				temporario = new Conjunto("conjunto", new ArrayList<Elementos>());
-				temporario.addElemento(ancora);
-				temp.add(temporario);
-				temp.addAll(sub);
-			}
 
-			
-		}
+        ArrayList<Conjunto> temp = new ArrayList<Conjunto>();
+        for (Conjunto ref : sub) {
+            ArrayList<Elementos> copiaElementos = new ArrayList<Elementos>();
+            copiaElementos.addAll(ref.getElementos());
+            copiaElementos.add(ancora);
+            Conjunto copia = new Conjunto("conjunto", copiaElementos);
 
-		return temp;
+            temp.add(copia);
+            temp.add(ref);
+        }
+        ArrayList<Elementos>unitarioElemento = new ArrayList<Elementos>();
+        unitarioElemento.add(ancora);
+        Conjunto unitario = new Conjunto("conjunto", unitarioElemento);
+        temp.add(unitario);
 
-	}
+        sub = temp;
 
-	public String getNome() {
-		return nome;
-	}
+        return sub;
 
-	public ArrayList<Conjunto> getConjuntos() {
-		return conjuntos;
-	}
+    }
 
-	private ArrayList<Conjunto> corrigeConjuntos(ArrayList<Conjunto> conjuntos) {
-		ArrayList<Conjunto> retorna = new ArrayList<Conjunto>();
+    public String getNome() {
+        return nome;
+    }
 
-		for (int i = 0; i < conjuntos.size(); i++) {
-			boolean add = true;
-			if(conjuntos.get(i)!=null) {
-			for (int j = i + 1; j < conjuntos.size(); j++) {
-				ArrayList<Conjunto> temp = new ArrayList<Conjunto>();
-				temp.add(conjuntos.get(i));
-				temp.add(conjuntos.get(j));
-				Universo teste = new Universo(temp, null);
-				
-				
-				if (teste.contidoIgual(conjuntos.get(i), conjuntos.get(j))) {
-					
-					add = false;
-					break;
-				}}
-			
+    public ArrayList<Conjunto> getConjuntos() {
+        return conjuntos;
+    }
+public Conjunto refazer(){
+        Conjunto propriedade =this.conjuntos.get(0);
+        propriedade.setNome(this.nome);
 
-				if (add) {
-					
-					retorna.add(conjuntos.get(i));
-				}}
-			
-		}
-		return retorna;
-	}
+        Universo universo = new Universo(this.conjuntos,null);
+        for (int i = 0 ; i <this.conjuntos.size()-1;i++){
+            for (int j = i+1;j<this.conjuntos.size()-1;j++){
+                if (universo.contidoPropriamente(this.getConjuntos().get(j),this.getConjuntos().get(i))){
+                    if (universo.contidoPropriamente(propriedade,this.getConjuntos().get(i))){
+                        propriedade=this.getConjuntos().get(i);
+                    }
+                }
+            }
+        }
+        return propriedade;
+
+}
 
 }
